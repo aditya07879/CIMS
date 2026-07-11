@@ -221,3 +221,41 @@
   50%       { box-shadow: 0 0 0 6px rgba(249,115,98,0.15); }
 }
 .brand-pulse { animation: brandPulse 2.5s ease-in-out infinite; }
+
+
+/* ─── Mobile Sidebar / Layout ────────────────────────────────────── */
+.mobile-topbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .app-sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    width: 240px !important;
+  }
+  .app-sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+  .sidebar-close-btn {
+    display: block !important;
+  }
+  .app-main {
+    margin-left: 0 !important;
+    max-width: 100vw !important;
+    padding: 20px 16px !important;
+    padding-top: 72px !important; /* space for topbar */
+  }
+  .mobile-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 56px;
+    padding: 0 16px;
+    background: #111C2B;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    z-index: 30;
+  }
+}
