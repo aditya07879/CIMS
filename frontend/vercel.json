@@ -1,0 +1,5 @@
+{
+     "rewrites": [
+       { "source": "/api/:path*", "destination": "https://cims-backend-4g18.onrender.com/api/:path*" }
+     ]
+   }
