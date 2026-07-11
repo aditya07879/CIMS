@@ -35,10 +35,14 @@
       radial-gradient(ellipse 40% 40% at 90% 100%, rgba(249,115,98,0.04) 0%, transparent 70%);
     background-size: 32px 32px, 32px 32px, 100% 100%, 100% 100%;
     min-height: 100vh;
+    overflow-x: hidden;
   }
 
+  /* Prevent any page from creating horizontal scroll */
+  html, #root { overflow-x: hidden; width: 100%; }
+
   /* Scrollbar */
-  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
   ::-webkit-scrollbar-track { background: var(--bg-deep); }
   ::-webkit-scrollbar-thumb { background: var(--border); }
   ::-webkit-scrollbar-thumb:hover { background: var(--brand); }
@@ -93,7 +97,7 @@
     position: relative;
     overflow: hidden;
     transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-    display: inline-flex; align-items: center; gap: 0.375rem;
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.375rem;
   }
   .btn-primary::before {
     content: '';
@@ -103,7 +107,7 @@
     opacity: 0;
     transition: opacity 0.2s;
   }
-  .btn-primary:hover { 
+  .btn-primary:hover {
     background: #e55a49;
     box-shadow: 0 0 20px rgba(249,115,98,0.4);
     transform: translateY(-1px);
@@ -123,7 +127,7 @@
     border: 1px solid var(--border);
     cursor: pointer;
     transition: border-color 0.2s, color 0.2s, background 0.2s;
-    display: inline-flex; align-items: center; gap: 0.375rem;
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.375rem;
   }
   .btn-secondary:hover {
     border-color: var(--brand);
@@ -142,7 +146,7 @@
     border: 1px solid rgba(239,68,68,0.3);
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
-    display: inline-flex; align-items: center; gap: 0.375rem;
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.375rem;
   }
   .btn-danger:hover { background: rgba(239,68,68,0.2); border-color: #f87171; }
   .btn-danger:disabled { opacity: 0.45; cursor: not-allowed; }
@@ -222,10 +226,21 @@
 }
 .brand-pulse { animation: brandPulse 2.5s ease-in-out infinite; }
 
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE FIXES
+   ═══════════════════════════════════════════════════════════════ */
 
-/* ─── Mobile Sidebar / Layout ────────────────────────────────────── */
-.mobile-topbar {
-  display: none;
+/* ─── Sidebar / Layout ──────────────────────────────────────────── */
+.mobile-topbar { display: none; }
+
+/* ─── Dashboard stat cards ──────────────────────────────────────── */
+.dashboard-stats-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* ─── Auth (login/register) cards ──────────────────────────────── */
+.auth-card {
+  width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -257,5 +272,47 @@
     background: #111C2B;
     border-bottom: 1px solid rgba(255,255,255,0.06);
     z-index: 30;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 16px;
+  }
+  .page-header-action {
+    width: 100%;
+  }
+  .page-header-action > * {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .modal-box {
+    padding: 20px !important;
+    max-width: 100% !important;
+    margin: 0 8px;
+  }
+
+  .stat-card {
+    padding: 16px !important;
+  }
+
+  .confirm-actions {
+    flex-direction: column;
+  }
+
+  .dashboard-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .auth-card {
+    padding: 20px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .dashboard-stats-grid {
+    grid-template-columns: 1fr !important;
   }
 }

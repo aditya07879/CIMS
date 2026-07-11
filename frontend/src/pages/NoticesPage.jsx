@@ -155,7 +155,7 @@ const NoticeDetailModal = ({ notice, onClose }) => {
 
         <AttachmentLink notice={notice} />
 
-        <div className="border-t border-surface-border pt-3 grid grid-cols-2 gap-2 text-xs text-gray-500">
+        <div className="border-t border-surface-border pt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-500">
           <div><span className="text-gray-600">Posted by:</span> {notice.createdBy?.name}</div>
           <div><span className="text-gray-600">Date:</span> {formatDate(notice.createdAt)}</div>
           <div className="col-span-2"><span className="text-gray-600">Sections:</span> {sections}</div>

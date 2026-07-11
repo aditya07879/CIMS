@@ -63,7 +63,7 @@ const DashboardPage = () => {
       <Alert message={error} />
 
       {/* Stats grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', marginBottom: '32px' }} className="stagger">
+      <div className="dashboard-stats-grid stagger" style={{ display: 'grid', gap: '16px', marginBottom: '32px' }}>
         <StatCard label="Total Issues"  value={stats?.total}            LucideIcon={Layers}       color="brand"  />
         <StatCard label="Open"          value={getCount('Open')}        LucideIcon={Circle}       color="blue"   />
         <StatCard label="Under Review"  value={getCount('Under Review')} LucideIcon={Clock}       color="yellow" />
@@ -75,7 +75,8 @@ const DashboardPage = () => {
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(90deg, #F97362 0%, transparent 50%)' }} />
 
         <div style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between',
+          gap: '10px',
           padding: '16px 20px',
           borderBottom: '1px solid #2D3F5A',
         }}>

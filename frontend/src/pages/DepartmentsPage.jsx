@@ -59,7 +59,7 @@ const DepartmentsPage = () => {
     <Layout>
       <div className="space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h1 className="text-2xl font-bold text-gray-100">Departments</h1>
             <p className="text-sm text-gray-500 mt-1">Manage academic departments</p>
@@ -80,7 +80,7 @@ const DepartmentsPage = () => {
           <div className="bg-surface-card border border-surface-border rounded-xl p-6">
             <h2 className="text-base font-semibold text-gray-200 mb-4">Create New Department</h2>
             <form onSubmit={handleCreate} className="flex flex-col gap-4">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-medium text-gray-400 mb-1">Short Code *</label>
                   <input
@@ -123,7 +123,8 @@ const DepartmentsPage = () => {
           ) : departments.length === 0 ? (
             <div className="text-center py-16 text-gray-500">No departments yet. Create one above.</div>
           ) : (
-            <table className="w-full text-sm">
+            <div className="overflow-x-auto -mx-6 px-6 sm:mx-0 sm:px-0">
+            <table className="w-full text-sm min-w-[640px]">
               <thead>
                 <tr className="border-b border-surface-border">
                   <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Code</th>
@@ -156,6 +157,7 @@ const DepartmentsPage = () => {
                 ))}
               </tbody>
             </table>
+            </div>
           )}
         </div>
       </div>

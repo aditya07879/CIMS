@@ -215,7 +215,7 @@ const HODPanelPage = () => {
         {/* ── Overview ─────────────────────────────────────────────── */}
         {activeTab === 'Overview' && dashboard && (
           <div className="space-y-4">
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
                 { label: 'Total Sections', value: dashboard.stats.totalSections },
                 { label: 'Total Mentors', value: dashboard.stats.totalMentors },
@@ -233,7 +233,7 @@ const HODPanelPage = () => {
               {dashboard.classrooms.length === 0 ? (
                 <p className="text-sm text-gray-500">No sections created yet.</p>
               ) : (
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {dashboard.classrooms.map(c => (
                     <div key={c._id} className="flex items-center justify-between p-3 bg-surface-hover rounded-lg">
                       <div>
@@ -279,7 +279,7 @@ const HODPanelPage = () => {
             {showSectionForm && (
               <div className="bg-surface-card border border-surface-border rounded-xl p-5">
                 <h3 className="text-sm font-semibold text-gray-200 mb-3">Create Section</h3>
-                <form onSubmit={handleCreateSection} className="grid grid-cols-2 gap-4">
+                <form onSubmit={handleCreateSection} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-medium text-gray-400 mb-1">Section Letter *</label>
                     <select
@@ -331,7 +331,7 @@ const HODPanelPage = () => {
                   </div>
                   <div>
                     <label className="block text-xs font-medium text-gray-400 mb-2">Sections to assign (select multiple) *</label>
-                    <div className="grid grid-cols-3 gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                       {classrooms.map(c => (
                         <label key={c._id} className={`flex items-center gap-2 p-3 rounded-lg border cursor-pointer transition-all
                           ${assignForm.sectionIds.includes(c._id)
@@ -363,7 +363,8 @@ const HODPanelPage = () => {
               {classrooms.length === 0 ? (
                 <div className="text-center py-12 text-gray-500">No sections yet.</div>
               ) : (
-                <table className="w-full text-sm">
+                <div className="overflow-x-auto -mx-6 px-6 sm:mx-0 sm:px-0">
+            <table className="w-full text-sm min-w-[640px]">
                   <thead>
                     <tr className="border-b border-surface-border">
                       <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Section</th>
@@ -394,6 +395,7 @@ const HODPanelPage = () => {
                     ))}
                   </tbody>
                 </table>
+            </div>
               )}
             </div>
           </div>
@@ -415,7 +417,7 @@ const HODPanelPage = () => {
             {showMentorForm && (
               <div className="bg-surface-card border border-surface-border rounded-xl p-5">
                 <h3 className="text-sm font-semibold text-gray-200 mb-3">Create Mentor Account</h3>
-                <form onSubmit={handleCreateMentor} className="grid grid-cols-3 gap-4">
+                <form onSubmit={handleCreateMentor} className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div>
                     <label className="block text-xs font-medium text-gray-400 mb-1">Name *</label>
                     <input value={mentorForm.name} onChange={e => setMentorForm(f => ({ ...f, name: e.target.value }))}
@@ -448,7 +450,8 @@ const HODPanelPage = () => {
               {mentors.length === 0 ? (
                 <div className="text-center py-12 text-gray-500">No mentors yet. Create one above.</div>
               ) : (
-                <table className="w-full text-sm">
+                <div className="overflow-x-auto -mx-6 px-6 sm:mx-0 sm:px-0">
+            <table className="w-full text-sm min-w-[640px]">
                   <thead>
                     <tr className="border-b border-surface-border">
                       <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
@@ -489,6 +492,7 @@ const HODPanelPage = () => {
                     })}
                   </tbody>
                 </table>
+            </div>
               )}
             </div>
           </div>
@@ -502,7 +506,8 @@ const HODPanelPage = () => {
               {students.length === 0 ? (
                 <div className="text-center py-12 text-gray-500">No students found in your dept/year.</div>
               ) : (
-                <table className="w-full text-sm">
+                <div className="overflow-x-auto -mx-6 px-6 sm:mx-0 sm:px-0">
+            <table className="w-full text-sm min-w-[640px]">
                   <thead>
                     <tr className="border-b border-surface-border">
                       <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
@@ -526,6 +531,7 @@ const HODPanelPage = () => {
                     ))}
                   </tbody>
                 </table>
+            </div>
               )}
             </div>
           </div>
@@ -534,7 +540,7 @@ const HODPanelPage = () => {
         {/* ── Escalations ──────────────────────────────────────────── */}
         {activeTab === 'Escalations' && (
           <div className="space-y-4">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-3">
               <h2 className="text-base font-semibold text-gray-200">Forwarded Issues</h2>
               <select
                 value={escStatusFilter}
@@ -556,7 +562,8 @@ const HODPanelPage = () => {
               </div>
             ) : (
               <div className="bg-surface-card border border-surface-border rounded-xl overflow-hidden">
-                <table className="w-full text-sm">
+                <div className="overflow-x-auto -mx-6 px-6 sm:mx-0 sm:px-0">
+            <table className="w-full text-sm min-w-[640px]">
                   <thead>
                     <tr className="border-b border-surface-border">
                       <th className="text-left px-5 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Student</th>
@@ -639,6 +646,7 @@ const HODPanelPage = () => {
                     ))}
                   </tbody>
                 </table>
+            </div>
               </div>
             )}
           </div>

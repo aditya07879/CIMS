@@ -43,7 +43,7 @@ const CreateIssuePage = () => {
         action={<Link to="/issues" className="btn-secondary text-sm">← Back</Link>}
       />
 
-      <div className="max-w-2xl">
+      <div className="max-w-2xl w-full">
         <div className="card p-6">
           <Alert message={error} />
           <form onSubmit={submit} className="space-y-5 mt-1">
@@ -105,7 +105,7 @@ const CreateIssuePage = () => {
               </div>
             </label>
 
-            <div className="flex gap-3 pt-2">
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <Link to="/issues" className="btn-secondary flex-1 text-center">Cancel</Link>
               <button type="submit" className="btn-primary flex-1 flex items-center justify-center gap-2" disabled={loading}>
                 {loading ? <><Spinner size="sm" /> Submitting...</> : 'Submit Issue'}

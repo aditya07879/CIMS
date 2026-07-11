@@ -123,7 +123,7 @@ const HODManagementPage = () => {
     <Layout>
       <div className="space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h1 className="text-2xl font-bold text-gray-100">HOD Management</h1>
             <p className="text-sm text-gray-500 mt-1">Create or assign Heads of Department for specific dept + year combinations</p>
@@ -154,7 +154,7 @@ const HODManagementPage = () => {
             <p className="text-xs text-gray-500 mb-4">
               Creates a new user with the HOD role and assigns them to the selected Department + Year.
             </p>
-            <form onSubmit={handleCreate} className="grid grid-cols-2 gap-4">
+            <form onSubmit={handleCreate} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className={labelCls}>Full Name *</label>
                 <input
@@ -188,7 +188,7 @@ const HODManagementPage = () => {
                   minLength={6}
                 />
               </div>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className={labelCls}>Department *</label>
                   <select
@@ -283,7 +283,7 @@ const HODManagementPage = () => {
                   <p className="text-xs text-gray-600 mt-1">The user will be promoted to the HOD role.</p>
                 </div>
               )}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className={labelCls}>Department *</label>
                   <select
@@ -335,7 +335,8 @@ const HODManagementPage = () => {
           ) : assignments.length === 0 ? (
             <div className="text-center py-16 text-gray-500">No HOD assignments yet.</div>
           ) : (
-            <table className="w-full text-sm">
+            <div className="overflow-x-auto -mx-6 px-6 sm:mx-0 sm:px-0">
+            <table className="w-full text-sm min-w-[640px]">
               <thead>
                 <tr className="border-b border-surface-border">
                   <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">HOD</th>
@@ -375,6 +376,7 @@ const HODManagementPage = () => {
                 ))}
               </tbody>
             </table>
+            </div>
           )}
         </div>
       </div>

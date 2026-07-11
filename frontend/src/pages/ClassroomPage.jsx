@@ -158,7 +158,7 @@ const AdminClassroomList = ({ classrooms, onRefresh, createOpen, setCreateOpen }
       <Modal isOpen={createOpen} onClose={() => setCreateOpen(false)} title="Create Classroom">
         {err && <div className="mb-3 text-sm text-red-400">{err}</div>}
         <form onSubmit={handleCreate} className="space-y-4">
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <Select label="Dept" value={form.department} onChange={v => setForm(f => ({ ...f, department: v }))}
               options={DEPARTMENTS.map(d => ({ value: d, label: d }))} />
             <Select label="Year" value={form.year} onChange={v => setForm(f => ({ ...f, year: v }))}
@@ -222,7 +222,7 @@ const MentorClassroomList = ({ classrooms, createOpen, setCreateOpen, onRefresh 
       <Modal isOpen={createOpen} onClose={() => setCreateOpen(false)} title="Create Classroom">
         {err && <div className="mb-3 text-sm text-red-400">{err}</div>}
         <form onSubmit={handleCreate} className="space-y-4">
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <Select label="Dept" value={form.department} onChange={v => setForm(f => ({ ...f, department: v }))}
               options={DEPARTMENTS.map(d => ({ value: d, label: d }))} />
             <Select label="Year" value={form.year} onChange={v => setForm(f => ({ ...f, year: v }))}

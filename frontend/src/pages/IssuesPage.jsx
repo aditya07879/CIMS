@@ -60,11 +60,11 @@ const IssuesPage = () => {
 
       {/* Filters */}
       <div className="flex flex-wrap gap-3 mb-6">
-        <Select value={filters.status} onChange={setFilter('status')} className="w-36"
+        <Select value={filters.status} onChange={setFilter('status')} className="w-[calc(50%-6px)] sm:w-36"
           options={[{ value: '', label: 'All Status' }, ...STATUSES.map(s => ({ value: s, label: s }))]} />
-        <Select value={filters.category} onChange={setFilter('category')} className="w-40"
+        <Select value={filters.category} onChange={setFilter('category')} className="w-[calc(50%-6px)] sm:w-40"
           options={[{ value: '', label: 'All Categories' }, ...CATEGORIES.map(c => ({ value: c, label: c }))]} />
-        <Select value={filters.sort} onChange={setFilter('sort')} className="w-40" options={SORT_OPTIONS} />
+        <Select value={filters.sort} onChange={setFilter('sort')} className="w-full sm:w-40" options={SORT_OPTIONS} />
       </div>
 
       <Alert message={error} />
@@ -98,8 +98,8 @@ const IssuesPage = () => {
                         <span className="badge bg-gray-500/10 text-gray-500 border border-gray-500/20">Anonymous</span>
                       )}
                     </div>
-                    <p className="font-medium text-gray-200">{issue.title}</p>
-                    <div className="flex items-center gap-3 mt-1.5 text-xs text-gray-500">
+                    <p className="font-medium text-gray-200 break-words">{issue.title}</p>
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5 text-xs text-gray-500">
   <span>
     {issue.classroom?.department}-{issue.classroom?.year}{issue.classroom?.section}
   </span>

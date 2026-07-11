@@ -56,7 +56,7 @@ const LoginPage = () => {
         </div>
 
         {/* Form card */}
-        <div style={{
+        <div className="auth-card" style={{
           background: '#243044',
           border: '1px solid #2D3F5A',
           borderTop: '2px solid #F97362',

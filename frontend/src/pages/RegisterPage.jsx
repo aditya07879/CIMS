@@ -38,7 +38,7 @@ const RegisterPage = () => {
           <p style={{ fontSize: '12px', color: '#64748B', marginTop: '5px', fontFamily: 'Inter, sans-serif' }}>Student self-registration</p>
         </div>
 
-        <div style={{ background: '#243044', border: '1px solid #2D3F5A', borderTop: '2px solid #F97362', padding: '28px' }}>
+        <div className="auth-card" style={{ background: '#243044', border: '1px solid #2D3F5A', borderTop: '2px solid #F97362', padding: '28px' }}>
           <Alert message={error} />
           <form onSubmit={submit}>
             <div style={{ display: 'grid', gap: '14px' }}>
@@ -51,7 +51,7 @@ const RegisterPage = () => {
                 <p style={{ fontSize: '11px', color: '#475569', marginTop: '4px', fontFamily: 'Inter, sans-serif' }}>Admin/HOD/Mentor accounts are created by administrators.</p>
               </div>
               <div><label style={labelStyle}>Roll Number</label><input className="input" placeholder="2021CSE001" value={form.rollNumber} onChange={handleInput('rollNumber')} required /></div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(84px, 1fr))', gap: '10px' }}>
                 <Select label="Dept"    value={form.department} onChange={handle('department')} options={DEPARTMENTS.map(d => ({ value: d, label: d }))} />
                 <Select label="Year"    value={form.year}       onChange={handle('year')}       options={[1,2,3,4].map(y => ({ value: String(y), label: `Y${y}` }))} />
                 <Select label="Section" value={form.section}    onChange={handle('section')}    options={SECTIONS.map(s => ({ value: s, label: s }))} />

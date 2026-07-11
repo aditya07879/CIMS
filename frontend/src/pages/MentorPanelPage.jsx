@@ -146,7 +146,7 @@ const MentorPanelPage = () => {
         {/* ── Overview ─────────────────────────────────────────── */}
         {activeTab === 'Overview' && dashboard && (
           <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
                 { label: 'My Sections', value: dashboard.stats.totalSections },
                 { label: 'Total Students', value: dashboard.stats.totalStudents },
@@ -163,7 +163,7 @@ const MentorPanelPage = () => {
               {dashboard.classrooms.length === 0 ? (
                 <p className="text-sm text-gray-500">No sections assigned yet. Contact your HOD.</p>
               ) : (
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {dashboard.classrooms.map(c => (
                     <div key={c._id} className="flex items-center justify-between p-3 bg-surface-hover rounded-lg">
                       <div>
@@ -194,7 +194,8 @@ const MentorPanelPage = () => {
               {classrooms.length === 0 ? (
                 <div className="text-center py-12 text-gray-500">No sections assigned. Contact your HOD.</div>
               ) : (
-                <table className="w-full text-sm">
+                <div className="overflow-x-auto -mx-6 px-6 sm:mx-0 sm:px-0">
+            <table className="w-full text-sm min-w-[640px]">
                   <thead>
                     <tr className="border-b border-surface-border">
                       <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Section</th>
@@ -218,6 +219,7 @@ const MentorPanelPage = () => {
                     ))}
                   </tbody>
                 </table>
+            </div>
               )}
             </div>
           </div>
@@ -226,7 +228,7 @@ const MentorPanelPage = () => {
         {/* ── Students ─────────────────────────────────────────── */}
         {activeTab === 'Students' && (
           <div className="space-y-4">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-3">
               <h2 className="text-base font-semibold text-gray-200">Students</h2>
               {classrooms.length > 0 && (
                 <select
@@ -245,7 +247,8 @@ const MentorPanelPage = () => {
               {students.length === 0 ? (
                 <div className="text-center py-12 text-gray-500">No students found.</div>
               ) : (
-                <table className="w-full text-sm">
+                <div className="overflow-x-auto -mx-6 px-6 sm:mx-0 sm:px-0">
+            <table className="w-full text-sm min-w-[640px]">
                   <thead>
                     <tr className="border-b border-surface-border">
                       <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
@@ -269,6 +272,7 @@ const MentorPanelPage = () => {
                     ))}
                   </tbody>
                 </table>
+            </div>
               )}
             </div>
           </div>
@@ -277,7 +281,7 @@ const MentorPanelPage = () => {
         {/* ── Issues ───────────────────────────────────────────── */}
         {activeTab === 'Issues' && (
           <div className="space-y-4">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-3">
               <h2 className="text-base font-semibold text-gray-200">Section Issues</h2>
               {classrooms.length > 0 && (
                 <select

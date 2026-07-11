@@ -92,21 +92,23 @@ export const Modal = ({ isOpen, onClose, title, children }) => {
         style={{ position: 'absolute', inset: 0, background: 'rgba(10,15,25,0.75)', backdropFilter: 'blur(4px)' }}
         onClick={onClose}
       />
-      <div style={{
+      <div className="fade-in modal-box" style={{
         position: 'relative',
         background: '#243044',
         border: '1px solid #2D3F5A',
         borderTop: '2px solid #F97362',
         width: '100%', maxWidth: '520px',
         padding: '28px',
-      }} className="fade-in">
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
+        maxHeight: '90vh',
+        overflowY: 'auto',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', gap: '12px' }}>
           <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '16px', color: '#F1F5F9', letterSpacing: '-0.01em' }}>{title}</h2>
           <button
             onClick={onClose}
             style={{
               background: 'none', border: '1px solid #2D3F5A', color: '#64748B',
-              width: '28px', height: '28px', cursor: 'pointer',
+              width: '28px', height: '28px', cursor: 'pointer', flexShrink: 0,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               transition: 'all 0.15s', borderRadius: '4px',
             }}
@@ -129,25 +131,28 @@ export const Badge = ({ children, className = '' }) => (
 
 /* ── PageHeader ──────────────────────────────────────────────── */
 export const PageHeader = ({ title, subtitle, action }) => (
-  <div style={{
+  <div className="page-header" style={{
     display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between',
     marginBottom: '32px',
     paddingBottom: '24px',
     borderBottom: '1px solid #2D3F5A',
     position: 'relative',
+    flexWrap: 'wrap',
+    gap: '16px',
   }}>
     <div style={{
       position: 'absolute', bottom: '-1px', left: 0,
       width: '40px', height: '2px', background: '#F97362',
     }} />
-    <div>
+    <div style={{ minWidth: 0 }}>
       <h1 style={{
         fontFamily: 'Inter, sans-serif',
         fontWeight: 800,
-        fontSize: '22px',
+        fontSize: 'clamp(18px, 5vw, 22px)',
         color: '#F1F5F9',
         letterSpacing: '-0.03em',
         lineHeight: 1.1,
+        wordBreak: 'break-word',
       }}>{title}</h1>
       {subtitle && (
         <p style={{
@@ -158,7 +163,7 @@ export const PageHeader = ({ title, subtitle, action }) => (
         }}>{subtitle}</p>
       )}
     </div>
-    {action && <div className="fade-in">{action}</div>}
+    {action && <div className="fade-in page-header-action">{action}</div>}
   </div>
 );
 
@@ -173,14 +178,14 @@ export const StatCard = ({ label, value, LucideIcon, color = 'brand' }) => {
   }[color];
 
   return (
-    <div style={{
+    <div className="fade-in stat-card" style={{
       background: '#243044',
       border: '1px solid #2D3F5A',
       padding: '20px 22px',
       position: 'relative',
       overflow: 'hidden',
       transition: 'border-color 0.2s, transform 0.2s',
-    }} className="fade-in"
+    }}
     onMouseEnter={e => { e.currentTarget.style.borderColor = colors.border; e.currentTarget.style.transform = 'translateY(-2px)'; }}
     onMouseLeave={e => { e.currentTarget.style.borderColor = '#2D3F5A'; e.currentTarget.style.transform = 'translateY(0)'; }}
     >
@@ -196,9 +201,9 @@ export const StatCard = ({ label, value, LucideIcon, color = 'brand' }) => {
       <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '1px', background: `linear-gradient(90deg, ${colors.text} 0%, transparent 60%)`, opacity: 0.6 }} />
 
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-        <div>
+        <div style={{ minWidth: 0 }}>
           <p style={{ fontSize: '10px', color: '#64748B', fontFamily: 'Inter, sans-serif', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>{label}</p>
-          <p style={{ fontSize: '32px', fontFamily: 'Inter, sans-serif', fontWeight: 800, color: '#F1F5F9', letterSpacing: '-0.04em', lineHeight: 1 }}>{value ?? '—'}</p>
+          <p style={{ fontSize: 'clamp(22px, 6vw, 32px)', fontFamily: 'Inter, sans-serif', fontWeight: 800, color: '#F1F5F9', letterSpacing: '-0.04em', lineHeight: 1 }}>{value ?? '—'}</p>
         </div>
         {LucideIcon && (
           <div style={{
@@ -283,7 +288,7 @@ export const ConfirmModal = ({ isOpen, onClose, onConfirm, title, description, r
           style={{ resize: 'none', marginBottom: '16px', display: 'block' }}
         />
       )}
-      <div style={{ display: 'flex', gap: '10px' }}>
+      <div className="confirm-actions" style={{ display: 'flex', gap: '10px' }}>
         <button className="btn-secondary" style={{ flex: 1, justifyContent: 'center' }} onClick={onClose}>Cancel</button>
         <button
           className="btn-danger"
@@ -321,6 +326,7 @@ export const CategoryBadge = ({ category }) => {
       color: c.color,
       border: `1px solid ${c.border}`,
       background: c.bg,
+      whiteSpace: 'nowrap',
     }}>{category}</span>
   );
 };

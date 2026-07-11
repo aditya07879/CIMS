@@ -111,9 +111,9 @@ const IssueDetailPage = () => {
             )}
           </div>
 
-          <h1 className="text-xl font-semibold text-gray-100 mb-2">{issue.title}</h1>
+          <h1 className="text-xl font-semibold text-gray-100 mb-2 break-words">{issue.title}</h1>
 
-          <div className="flex items-center gap-3 text-xs text-gray-500 mb-5">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-500 mb-5">
   <span>
     {issue.classroom?.department}-{issue.classroom?.year}{issue.classroom?.section}
   </span>
@@ -141,7 +141,7 @@ const IssueDetailPage = () => {
           <p className="text-gray-300 leading-relaxed whitespace-pre-wrap">{issue.description}</p>
 
           {/* Voting */}
-          <div className="flex items-center gap-3 mt-6 pt-5 border-t border-surface-border">
+          <div className="flex flex-wrap items-center gap-3 mt-6 pt-5 border-t border-surface-border">
             {['student', 'mentor'].includes(user.role) && (
               <>
                 <button
@@ -169,21 +169,21 @@ const IssueDetailPage = () => {
               </>
             )}
 
-            <div className="flex-1" />
+            <div className="flex-1 hidden sm:block" />
 
             {/* Mentor/Admin actions */}
             {canModerate && (
-              <>
+              <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
                 <Select
                   value={issue.status}
                   onChange={handleStatus}
-                  className="w-40"
+                  className="w-full sm:w-40"
                   options={STATUSES.map(s => ({ value: s, label: s }))}
                 />
                 <button onClick={() => setDeleteOpen(true)} className="btn-danger text-sm px-3 py-1.5">
                   Delete
                 </button>
-              </>
+              </div>
             )}
           </div>
         </div>
