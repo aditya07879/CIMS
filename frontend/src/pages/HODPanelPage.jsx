@@ -197,12 +197,12 @@ const HODPanelPage = () => {
         {success && <Alert type="success" message={success} onClose={() => setSuccess('')} />}
 
         {/* Tabs */}
-        <div className="flex gap-1 bg-surface-hover p-1 rounded-lg w-fit">
+        <div className="flex gap-1 bg-surface-hover p-1 rounded-lg w-fit overflow-x-auto max-w-full">
           {TABS.map(tab => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-4 py-1.5 rounded-md text-sm font-medium transition-all
+              className={`px-4 py-1.5 rounded-md text-sm font-medium transition-all whitespace-nowrap shrink-0
                 ${activeTab === tab
                   ? 'bg-surface-card text-gray-100 shadow-sm'
                   : 'text-gray-500 hover:text-gray-300'}`}
